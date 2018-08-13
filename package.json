@@ -12,7 +12,10 @@
     "build:clean": "rimraf ./build",
     "start": "cross-env NODE_ENV=production node server",
     "start:production": "npm run build && npm run start:prod",
-    "start:prod": "cross-env NODE_ENV=production node server"
+    "start:prod": "cross-env NODE_ENV=production node server",
+    "deploy":"pm2 deploy ecosystem.config.js production --force",
+    "pre-build":
+    "yarn run build  && sudo pm2 startOrRestart ecosystem.config.js"
   },
   "repository": {
     "type": "git",
