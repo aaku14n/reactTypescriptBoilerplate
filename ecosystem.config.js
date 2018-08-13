@@ -18,7 +18,7 @@ module.exports = {
         repo: "git@github.com:aaku14n/reactTypescriptBoilerplate.git",
         ssh_options: ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
         path: "/home/ubuntu/react-boilerplate",
-        "post-deploy":  "yarn run pre-build"
+        "post-deploy":  "npm run pre-build"
       }
     }
   };
