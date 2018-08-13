@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.9.0
+      - image: circleci/node:6.11.3
       
     steps:
       - checkout
@@ -16,8 +16,8 @@ jobs:
           command: 'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
-      - run: yarn --ignore-engines
-      - run: sudo yarn install
+      - run: npm --ignore-engines
+      - run: sudo npm install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -29,11 +29,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: yarn deploy
+      - run: npm deploy
