@@ -3,9 +3,9 @@ const fs = require("fs");
 const glob = require("glob");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-const CircularDependencyPlugin = require("add-asset-html-webpack-plugin");
 
+const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
+const CircularDependencyPlugin = require("circular-dependency-plugin");
 const logger = require("../../server/logger")
 
 const pkg = require(path.resolve(process.cwd(),"package.json") );
@@ -16,12 +16,12 @@ const plugins = [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
         inject: true,
-        template: "app/index.html"
+        template: "public/index.html",
     }),
     new CircularDependencyPlugin({
         exclude: /node_modules/,
         failOnError: false,
-    })
+    }),
 ];
 
 if (dllPlugin) {
@@ -38,7 +38,7 @@ module.exports = require("./webpack.base")({
     entry: [
         "eventsource-polyfill", // for HMR
         "webpack-hot-middleware/client?reload=true",
-        path.join(process.cwd(), "src/App.tsx"),
+        path.join(process.cwd(), "src/index.tsx"),
 
     ],
     output: {
@@ -48,7 +48,8 @@ module.exports = require("./webpack.base")({
     optimization: {
         minimize: false,
     },
-    plugins: dependencyHandlers().concat(plugins),
+  // Add development plugins
+  plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
     devtool: "eval-source-map",
     performance: {
         hints: false

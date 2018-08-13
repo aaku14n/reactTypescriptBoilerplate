@@ -45,6 +45,10 @@ npm manifest:
     "bugs": {
       "url": "https://github.com/aaku14n/reactTypescriptBoilerplate/issues"
     },
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/src"
+    ],
     "homepage": "https://github.com/aaku14n/reactTypescriptBoilerplate#readme",
     "dependencies": {
       "@types/react": "^16.4.8",
@@ -68,6 +72,7 @@ npm manifest:
       "exports-loader": "^0.7.0",
       "express": "^4.16.3",
       "html-loader": "^0.5.5",
+      "html-webpack-harddisk-plugin": "^0.2.0",
       "html-webpack-plugin": "^3.2.0",
       "lodash.defaultsdeep": "^4.6.0",
       "lodash.pullall": "^4.2.0",
@@ -90,6 +95,7 @@ npm manifest:
       "webpack": "^4.16.5",
       "webpack-cleanup-plugin": "^0.5.1",
       "webpack-cli": "^3.1.0",
+      "webpack-dev-middleware": "^3.1.3",
       "webpack-dev-server": "^3.1.5",
       "webpack-hot-middleware": "^2.22.3"
     }
@@ -144,6 +150,25 @@ Lockfile:
     dependencies:
       "@types/prop-types" "*"
       csstype "^2.2.0"
+  
+  "@types/tapable@^0":
+    version "0.2.5"
+    resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-0.2.5.tgz#2443fc12da514c81346b1a665675559cee21fa75"
+  
+  "@types/uglify-js@*":
+    version "3.0.3"
+    resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.0.3.tgz#801a5ca1dc642861f47c46d14b700ed2d610840b"
+    dependencies:
+      source-map "^0.6.1"
+  
+  "@types/webpack@^3.0.5":
+    version "3.8.14"
+    resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.14.tgz#e2bfdf7f604b3f7dc776eaa17446d7f7538f3de7"
+    dependencies:
+      "@types/node" "*"
+      "@types/tapable" "^0"
+      "@types/uglify-js" "*"
+      source-map "^0.6.0"
   
   "@webassemblyjs/ast@1.5.13":
     version "1.5.13"
@@ -2657,6 +2682,13 @@ Lockfile:
       relateurl "0.2.x"
       uglify-js "3.4.x"
   
+  html-webpack-harddisk-plugin@^0.2.0:
+    version "0.2.0"
+    resolved "https://registry.yarnpkg.com/html-webpack-harddisk-plugin/-/html-webpack-harddisk-plugin-0.2.0.tgz#465414a534219b69c1fd8127b585f8d86897fb2d"
+    dependencies:
+      "@types/webpack" "^3.0.5"
+      mkdirp "^0.5.1"
+  
   html-webpack-plugin@^3.2.0:
     version "3.2.0"
     resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-3.2.0.tgz#b01abbd723acaaa7b37b6af4492ebda03d9dd37b"
@@ -4752,7 +4784,7 @@ Lockfile:
     version "0.5.7"
     resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   
-  source-map@^0.6.1, source-map@~0.6.1:
+  source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   
@@ -5277,7 +5309,7 @@ Lockfile:
       v8-compile-cache "^2.0.0"
       yargs "^12.0.1"
   
-  webpack-dev-middleware@3.1.3:
+  webpack-dev-middleware@3.1.3, webpack-dev-middleware@^3.1.3:
     version "3.1.3"
     resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-3.1.3.tgz#8b32aa43da9ae79368c1bf1183f2b6cf5e1f39ed"
     dependencies:
