@@ -1,11 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackPwaManifest = require("offline-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const offlinePlugin = require("offline-plugin");
 const { HashedModuleIdsPlugin } = require("webpack");
-const { PRODUCTION } = require("../constants/index")
+const { PRODUCTION } = require("../constants/index");
 module.exports = require("./webpack.base")({
     mode: PRODUCTION,
-    entry: [path.join(process.cwd(), "src/App.ts")],
+    entry: [path.join(process.cwd(), "src/index.tsx")],
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].chunk.js',
